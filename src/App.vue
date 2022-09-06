@@ -1,26 +1,115 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="wrapper">
+    <Header />
+    <Navbar />
+    <Content />
+  </div>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+<script setup>
+import Header from "./components/App-Header.vue"
+import Navbar from "./components/Header-Navbar.vue"
+import Content from "./components/App-Content.vue"
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+:root {
+  font-family: 'Poppins', sans-serif;
+  /* font-family: 'Rubik Maze', cursive; */
+  --dark-color: rgb(35, 43, 58);
+  --medium-color: rgb(40, 50, 66);
+  --light-color: rgb(74, 85, 104);
+  --text-color: rgb(174, 213, 224);
+  --border-radius: 7px;
+  /* 
+  --primary-color: hsl(219, 24%, 22%);
+  --secondary-color: #161c2a;
+  --text-color: #a0aec0;
+  /* --text-color: #9dc7e0; */
+}
+
+::placeholder {
+  font-size: 1.5rem;
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: var(--text-color);
+  opacity: 0.3;
+  /* Firefox */
+}
+
+:-ms-input-placeholder {
+  font-size: 1.5rem;
+
+  color: var(--text-color);
+  opacity: 0.3;
+}
+
+::-ms-input-placeholder {
+  font-size: 1.5rem;
+
+  color: var(--text-color);
+  opacity: 0.3;
+}
+
+* {
+  font-size: 20px;
+  color: var(--text-color);
+
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  /* height: -webkit-fill-available; */
+  font-size: 62.5%;
+  background: linear-gradient(to bottom right,
+      var(--medium-color),
+      var(--dark-color));
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  color: var(--text-color);
+  /* background-color: #fff; */
+  min-height: 100vh;
+}
+
+#wrapper {
+  margin: 0 auto;
+  width: 1000px;
+}
+
+input {
+  padding: 0.5rem 1rem;
+}
+
+input,
+textarea {
+  color: var(--text-color);
+  font-size: 1.5rem;
+
+  outline: none;
+  border: none;
+  border-radius: var(--border-radius);
+  background-color: var(--light-color);
+}
+
+button {
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  background-color: var(--dark-color);
+  border: 0.5px solid rgba(174, 213, 224,0.5)
+
+}
+
+a {
+  color: var(--text-color);
+
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
 }
 </style>
