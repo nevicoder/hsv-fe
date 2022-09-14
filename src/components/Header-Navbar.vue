@@ -13,11 +13,12 @@ const isLogin = ref(true)
 <style scoped>
 nav {
     margin: 0 auto;
-    width: 70%;
+    width: 80%;
     margin-top: 4rem;
 }
 
 ul {
+    width: 100%;
     display: flex;
     justify-content: space-between;
 }
@@ -79,28 +80,29 @@ a {
 <template>
     <nav>
         <ul>
-            <li>Trang chủ</li>
-            <li>Bài viết mới nhất</li>
-            <li>Bài viết xem nhiều nhất</li>
-            <li>Bài viết theo chủ đề</li>
-            <li @click="open = true">Đăng kí / Đăng nhập</li>
+            <li><routerLink to="/">Trang chủ</routerLink></li>
+
+            <li><routerLink to="/posts/1">Tất cả bài viết</routerLink></li>
+            <li><routerLink to="/most-viewed">Bài viết được xem nhiều nhất</routerLink></li>
+            <li><routerLink to="/categories">Bài viết theo chủ đề</routerLink></li>
+            <li @click="open = true"><routerLink to="">Đăng kí / Đăng nhập</routerLink></li>
 
             <Teleport to="body">
                 <div v-if="open" class="modal" @click.stop="open = false">
-                        <form @click.stop="" v-if="isLogin" action="POST">
-                            <Logo />
-                            <span>ĐĂNG NHẬP</span>
-                            <div class="field">
-                                <label for="username">Tài khoản</label>
-                                <input type="text" placeholder="Tài khoản">
-                            </div>
-                            <div class="field">
-                                <label for="username">Mật khẩu</label>
-                                <input type="password" placeholder="Mật khẩu">
-                            </div>
-                            <button @click.stop="login">Đăng nhập</button>
-                            <a href="#" @click.stop="isLogin=!isLogin">Chưa có tài khoản? Đăng kí</a>
-                        </form>
+                    <form @click.stop="" v-if="isLogin" action="POST">
+                        <Logo />
+                        <span>ĐĂNG NHẬP</span>
+                        <div class="field">
+                            <label for="username">Tài khoản</label>
+                            <input type="text" placeholder="Tài khoản">
+                        </div>
+                        <div class="field">
+                            <label for="username">Mật khẩu</label>
+                            <input type="password" placeholder="Mật khẩu">
+                        </div>
+                        <button @click.stop="login">Đăng nhập</button>
+                        <a href="#" @click.stop="isLogin=!isLogin">Chưa có tài khoản? Đăng kí</a>
+                    </form>
                     <form @click.stop="" v-if="!isLogin" action="POST">
                         <Logo />
                         <span>ĐĂNG KÍ</span>

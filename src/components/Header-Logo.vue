@@ -1,7 +1,8 @@
 <template lang="">
-     <a href="/">
-            <h1>highsocietyvietnam.</h1>
-        </a>
+     <router-link to="/">
+
+         <h1>highsocietyvietnam.</h1>
+     </router-link>
 </template>
 <script setup>
 </script>

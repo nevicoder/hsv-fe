@@ -1,32 +1,46 @@
+<script setup>
+import Header from "./components/App-Header.vue"
+import Navbar from "./components/Header-Navbar.vue"
+import Footer from "./components/App-Footer.vue"
+</script>
+
 <template>
   <div id="wrapper">
     <Header />
     <Navbar />
-    <Content />
+    <router-view>
+    </router-view>
+    <Footer />
   </div>
+
 </template>
 
-<script setup>
-import Header from "./components/App-Header.vue"
-import Navbar from "./components/Header-Navbar.vue"
-import Content from "./components/App-Content.vue"
-
-</script>
-
 <style>
+/* scroll bar */
+::-webkit-scrollbar {
+  width: 15px;
+  background-color: var(--light-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--dark-color);
+}
+
 :root {
   font-family: 'Poppins', sans-serif;
   /* font-family: 'Rubik Maze', cursive; */
-  --dark-color: rgb(35, 43, 58);
+  /* --dark-color: rgb(35, 43, 58); */
+  --dark-color: rgb(22, 28, 42);
   --medium-color: rgb(40, 50, 66);
   --light-color: rgb(74, 85, 104);
-  --text-color: rgb(174, 213, 224);
-  --border-radius: 7px;
+  /* --text-color: rgb(174, 213, 224); */
+  --text-color: rgb(137, 157, 186);
+  --border-radius: 6px;
   /* 
-  --primary-color: hsl(219, 24%, 22%);
-  --secondary-color: #161c2a;
-  --text-color: #a0aec0;
-  /* --text-color: #9dc7e0; */
+    --primary-color: hsl(219, 24%, 22%);
+    --secondary-color: #161c2a;
+    --text-color: #a0aec0;
+    /* --text-color: #9dc7e0; */
 }
 
 ::placeholder {
@@ -39,14 +53,12 @@ import Content from "./components/App-Content.vue"
 
 :-ms-input-placeholder {
   font-size: 1.5rem;
-
   color: var(--text-color);
   opacity: 0.3;
 }
 
 ::-ms-input-placeholder {
   font-size: 1.5rem;
-
   color: var(--text-color);
   opacity: 0.3;
 }
@@ -54,7 +66,6 @@ import Content from "./components/App-Content.vue"
 * {
   font-size: 20px;
   color: var(--text-color);
-
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -88,7 +99,6 @@ input,
 textarea {
   color: var(--text-color);
   font-size: 1.5rem;
-
   outline: none;
   border: none;
   border-radius: var(--border-radius);
@@ -99,17 +109,18 @@ button {
   padding: 1rem;
   border-radius: var(--border-radius);
   background-color: var(--dark-color);
-  border: 0.5px solid rgba(174, 213, 224,0.5)
-
+  border: 0.5px solid rgba(174, 213, 224, 0.5)
 }
 
 a {
   color: var(--text-color);
-
   text-decoration: none;
 }
 
 li {
   list-style-type: none;
+}
+.content{
+  min-height: 1000px;
 }
 </style>

@@ -6,25 +6,29 @@ const props = defineProps({
 </script>
 
 <template>
-    <a href="/">
+    <article>
         <img class="thumbnail" v-bind:src="post.thumbnail" />
         <div>
-            <h2>{{ post.title }}</h2>
+            <routerLink :to="`post/${post.postId}`">{{ post.title }}</routerLink>
             <p class="detail" v-html="post.content"></p>
         </div>
-    </a>
+    </article>
 </template>
 
 <style scoped>
-a {
+article {
     display: flex;
     box-shadow: 3px 3px 10px 5px rgba(0, 0, 0, 0.25);
-    margin: 1rem 0;
+    margin: 3rem 0;
     background-color: var(--dark-color);
     border-radius: var(--border-radius);
+    height: 200px;
 }
 
-
+a{
+    font-size: 2rem;
+    font-weight: bold;
+}
 img {
     width: 30%;
 }
