@@ -6,7 +6,7 @@ const post = ref([])
 console.log(route.params.postId)
 // console.log($route)
 
-fetch(`http://localhost:9696/post/${route.params.postId}`).then(res => res.json()).then(data => {
+fetch(`https://highsocietyvn.herokuapp.com/post/${route.params.postId}`).then(res => res.json()).then(data => {
   console.log(data)
   post.value = data
 })

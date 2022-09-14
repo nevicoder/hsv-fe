@@ -8,14 +8,14 @@ import { useRoute } from 'vue-router'
 const route = useRoute()
 const props = ref([])
 console.log(route.params.page)
-fetch(`http://localhost:9696/posts/${route.params.page}`).then(res => res.json()).then(data => {
+fetch(`https://highsocietyvn.herokuapp.com/posts/${route.params.page}`).then(res => res.json()).then(data => {
     props.value = data
     console.log(data)
 })
 
 const getPosts = ($event) => {
     router.push({ path: `/posts/${$event}` })
-    fetch(`http://localhost:9696/posts/${$event}`).then(res => res.json()).then(data => {
+    fetch(`https://highsocietyvn.herokuapp.com/posts/${$event}`).then(res => res.json()).then(data => {
         props.value = data
     })
 

@@ -4,7 +4,7 @@ import router from "../router"
 import Post from "../components/App-Post.vue"
 import Pagination from "../components/AppPagination"
 const props = ref([])
-    fetch(`http://localhost:9696/most-viewed/`).then(res => res.json()).then(data => {
+    fetch(`https://highsocietyvn.herokuapp.com/most-viewed/`).then(res => res.json()).then(data => {
         props.value = data
         console.log(data)
     })
