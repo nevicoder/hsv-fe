@@ -1,25 +1,32 @@
 <script setup>
-import { ref,onMounted, } from 'vue'
-import router from "../router"
+import { ref, onBeforeMount } from 'vue'
+import { useUserStore } from '@/store/userStore';
+
 import Post from "../components/App-Post.vue"
-import Pagination from "../components/AppPagination"
+import spinner from "@/components/App-spinner.vue"
+
+const store = useUserStore();
 const props = ref([])
+onBeforeMount(() => {
+    store.setLoading();
     fetch(`https://highsocietyvn.herokuapp.com/most-viewed/`).then(res => res.json()).then(data => {
         props.value = data
-        console.log(data)
+        store.setLoading();
     })
+})
 
-// const getPosts = ($event) => {
-//     router.push({ path: `/posts/${$event}` })
-//     fetch(`http://localhost:9696/posts/${$event}`).then(res => res.json()).then(data => {
-//         props.value = data
-//     })
 
-// }
+  // const getPosts = ($event) => {
+  //     router.push({ path: `/posts/${$event}` })
+  //     fetch(`http://localhost:9696/posts/${$event}`).then(res => res.json()).then(data => {
+  //         props.value = data
+  //     })
+  // }
 </script>
-
+  
 <template>
-    <div class="content">
+    <spinner v-if="store.isLoading" />
+    <div class="content" v-if="!store.isLoading">
         <div class="posts" @changePage="changePage">
             <h4>Bài viết được xem nhiều nhất</h4>
             <ul>
@@ -29,9 +36,8 @@ const props = ref([])
             </ul>
         </div>
     </div>
-    <!-- <Pagination :props="props" :getPosts="getPosts" /> -->
 </template>
-
+  
 <style scoped>
 .posts {
     margin-top: 5rem;

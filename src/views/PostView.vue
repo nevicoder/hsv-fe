@@ -1,20 +1,26 @@
 <script setup>
 import { useRoute } from 'vue-router'
-import { ref } from 'vue'
+import { ref, onBeforeMount } from 'vue'
+
+import spinner from "../components/App-spinner.vue"
 const route = useRoute()
 const post = ref([])
-console.log(route.params.postId)
-// console.log($route)
+const isLoading = ref(false)
 
-fetch(`https://highsocietyvn.herokuapp.com/post/${route.params.postId}`).then(res => res.json()).then(data => {
-  console.log(data)
-  post.value = data
+onBeforeMount(() => {
+  isLoading.value = true
+  fetch(`https://highsocietyvn.herokuapp.com/post/${route.params.postId}`).then(res => res.json()).then(data => {
+    post.value = data
+    isLoading.value = false
+  })
 })
+
+
 </script>
 
 <template>
-<div class="content">
-  
+  <spinner v-if="isLoading" />
+  <div class="content" v-if="!isLoading">
     <div class="post">
       <h1 class="post__title">{{post.title}}</h1>
       <span class="post__date">Tác giả: {{post.author}}</span>
@@ -26,7 +32,7 @@ fetch(`https://highsocietyvn.herokuapp.com/post/${route.params.postId}`).then(re
         <router-link v-for="tag in post.tags" class="post__tag" :to="`/category/${tag}`">{{tag}},</router-link>
       </div>
     </div>
-</div>
+  </div>
 </template>
 
 

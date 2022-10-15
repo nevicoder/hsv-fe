@@ -11,11 +11,10 @@
     
 h1 {
 
-font-family: 'Barlow Condensed', sans-serif;
 color: var(--text-color);
 text-align: center;
 font-size: 5rem;
-font-weight: 700;
+font-weight: 500;
 -webkit-user-select: none;
 /* Safari */
 -ms-user-select: none;

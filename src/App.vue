@@ -1,9 +1,18 @@
 <script setup>
+import { useUserStore } from "./store/userStore"
+import { onBeforeMount } from "vue"
 import Header from "./components/App-Header.vue"
 import Navbar from "./components/Header-Navbar.vue"
 import Footer from "./components/App-Footer.vue"
-</script>
 
+const store = useUserStore();
+onBeforeMount(() => {
+  const userInfo = localStorage.getItem("userInfo");
+  console.log(userInfo)
+  if (userInfo) store.setUserInfo(JSON.parse(userInfo))
+})
+</script>
+  
 <template>
   <div id="wrapper">
     <Header />
@@ -14,7 +23,7 @@ import Footer from "./components/App-Footer.vue"
   </div>
 
 </template>
-
+  
 <style>
 /* scroll bar */
 ::-webkit-scrollbar {
@@ -37,10 +46,10 @@ import Footer from "./components/App-Footer.vue"
   --text-color: rgb(137, 157, 186);
   --border-radius: 6px;
   /* 
-    --primary-color: hsl(219, 24%, 22%);
-    --secondary-color: #161c2a;
-    --text-color: #a0aec0;
-    /* --text-color: #9dc7e0; */
+      --primary-color: hsl(219, 24%, 22%);
+      --secondary-color: #161c2a;
+      --text-color: #a0aec0;
+      /* --text-color: #9dc7e0; */
 }
 
 ::placeholder {
@@ -120,7 +129,9 @@ a {
 li {
   list-style-type: none;
 }
-.content{
+
+.content {
   min-height: 1000px;
 }
 </style>
+  

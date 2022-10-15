@@ -1,5 +1,3 @@
-
-
 <script setup>
     import Logo from "./Header-Logo.vue"
 </script>
@@ -41,6 +39,9 @@ header {
 .icon {
     font-size: 1.5rem;
 
+}
+a svg:hover{
+    box-shadow: 0px 0px 10px var(--text-color);
 }
 .social a:not(:first-child) {
     margin-left: 0.5rem;

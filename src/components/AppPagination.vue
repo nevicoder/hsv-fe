@@ -1,6 +1,7 @@
 <template>
     <div class="example-five">
-        <vue-awesome-paginate :total-items="props.noOfPosts" :items-per-page="props.perPage" :on-click="getPosts">
+        <vue-awesome-paginate :totalItems="props.noOfPosts" :current-page="props.current" :items-per-page="props.perPage"
+            :on-click="getPosts">
 
             <template #prev-button>
                 <span>
@@ -17,16 +18,19 @@
                     </svg>
                 </span>
             </template>
+            <span>{{props}}</span>
         </vue-awesome-paginate>
     </div>
 </template>
   
 <script setup>
+import { useRoute } from "vue-router"
+const route = useRoute()
 const { props, getPosts } = defineProps({
     props: Object,
     getPosts: Function
 });
-
+const currentPage = parseInt(route.params.page)
 </script>
   
 <style>
