@@ -1,14 +1,12 @@
 <script setup>
 import { ref } from 'vue'
 import { useUserStore } from "../store/userStore"
-import { useRoute } from "vue-router"
 import router from "../router"
-const store = useUserStore()
-
 import axios from "axios"
 import Logo from "./Header-Logo.vue"
 import spinner from "./App-spinner.vue"
 
+const store = useUserStore()
 const isLoading = ref(false)
 const open = ref(false)
 const isLogin = ref(true)
@@ -17,7 +15,7 @@ const password = ref()
 const password2 = ref()
 const login = () => {
     isLoading.value = true
-    axios.post('http://localhost:9696/auth/login', {
+    axios.post('https://highsocietyvn.herokuapp.com/auth/login', {
         username: username.value, password: password.value
     })
         .then((response) => {
@@ -38,7 +36,7 @@ const login = () => {
 }
 const signup = () => {
     if (password.value != password2.value) { console.log("Mat khau khong giong nhau") } else {
-        axios.post('http://localhost:9696/auth/register', {
+        axios.post('https://highsocietyvn.herokuapp.com/auth/register', {
             username: username.value, password: password.value
         })
         .then((response) => {
